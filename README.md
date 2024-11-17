@@ -101,3 +101,101 @@ The models are listed in the order of their training and evaluation:
 | surprise      | 0.7273   | 0.2    | 0.3137   |
 | trust         | 0.0      | 0.0    | 0.0      |
 
+### 4. Gemma
+- **Notebook**: [`Gemma_2b_Multilabel_Classification.ipynb`](./Gemma_2b_Multilabel_Classification.ipynb)
+- **Training Method**: Fine-tuned using the `transformers` library with custom class weight adjustments.
+- **Validation Strategy**: 10-fold cross-validation to ensure robust evaluation.
+
+- **Notes**:
+  - Successfully implemented class weights by calculating them relative to their distribution within each class rather than spanning across all classes. This adjustment significantly improved the F1 scores, particularly for the underrepresented classes.
+  - Noteworthy improvements were observed in the F1 scores for the minority classes like **"anticipation"**, **"surprise"**, and **"trust"**, which were previously challenging to predict accurately.
+
+#### Results
+- **Average F1-Macro**: 0.6222
+
+- **Class-wise F1 Scores**:
+
+| Label         | F1-Score |
+|---------------|----------|
+| anger         | 0.8409   |
+| anticipation  | 0.4326   |
+| disgust       | 0.7786   |
+| fear          | 0.7681   |
+| joy           | 0.8197   |
+| love          | 0.6289   |
+| optimism      | 0.7561   |
+| pessimism     | 0.4417   |
+| sadness       | 0.6937   |
+| surprise      | 0.4      |
+| trust         | 0.2839   |
+
+- **Key Observations**:
+  - The **F1 score for "trust"** improved to 0.2839, which is a significant jump compared to earlier models that struggled with this class.
+  - The model achieved an **F1 score of 0.4326 for "anticipation"** and **0.4 for "surprise"**, marking substantial gains for these previously challenging classes.
+
+### 5. Llama-3.2-1B
+- **Notebook**: [`Llama_3_2_1B_emotion_detection.ipynb`](./Llama_3_2_1B_emotion_detection.ipynb)
+- **Training Method**: Focused on optimizing the model with weight decay and extended training epochs to improve performance on minority classes.
+- **Validation Strategy**: 10-fold cross-validation to ensure robust evaluation.
+
+- **Notes**:
+  - Continued refinement of class weights, focusing on better handling of underrepresented classes.
+  - Significant improvements observed in predicting the classes "trust" and "surprise," which were historically difficult to classify.
+
+#### Results
+- **Average F1-Macro**: 0.6217
+
+- **Class-wise F1 Scores**:
+
+| Label         | F1-Score |
+|---------------|----------|
+| anger         | 0.8319   |
+| anticipation  | 0.4351   |
+| disgust       | 0.7754   |
+| fear          | 0.75     |
+| joy           | 0.8231   |
+| love          | 0.6207   |
+| optimism      | 0.7495   |
+| pessimism     | 0.4607   |
+| sadness       | 0.6897   |
+| surprise      | 0.4545   |
+| trust         | 0.2481   |
+
+- **Key Observations**:
+  - The **F1 score for "trust"** improved to 0.2481, a notable gain compared to previous models.
+  - Achieved an **F1 score of 0.4545 for "surprise"** and **0.4351 for "anticipation"**, demonstrating progress in classifying these challenging categories.
+
+### 6. Stella_en_1.5B_v5
+- **Notebook**: [`stella_en_1_5B_v5_emotion_detection_multilabel_10.ipynb`](./stella_en_1_5B_v5_emotion_detection_multilabel_10.ipynb)
+- **Training Method**: Utilized extended training epochs with weight decay and a custom `stella` tokenizer to optimize performance on underrepresented classes.
+- **Validation Strategy**: 10-fold cross-validation to achieve robust evaluation.
+
+- **Notes**:
+  - Initially, the model trained for too long, leading to overfitting. To address this, I reran the evaluation using a checkpoint that I manually selected based on a combination of validation loss and F1 score.
+  - The checkpoint I chose had a validation loss significantly lower (by 100%) than the checkpoint selected automatically during training, while the F1 score was only 0.002 lower than that of the default best checkpoint. This balance helped reduce overfitting while maintaining competitive F1 performance.
+  - The model showed notable improvements in F1 scores for minority classes, especially "trust" and "anticipation," which were previously difficult to classify.
+
+#### Results
+- **Average F1-Macro**: 0.6191
+
+- **Class-wise F1 Scores**:
+
+| Label         | F1-Score |
+|---------------|----------|
+| anger         | 0.8154   |
+| anticipation  | 0.4634   |
+| disgust       | 0.75     |
+| fear          | 0.7394   |
+| joy           | 0.81     |
+| love          | 0.6542   |
+| optimism      | 0.7490   |
+| pessimism     | 0.4053   |
+| sadness       | 0.6866   |
+| surprise      | 0.4      |
+| trust         | 0.3371   |
+
+- **Key Observations**:
+  - By using a custom-selected checkpoint, the **F1 score for "trust"** improved to 0.3371, a significant gain for this challenging class.
+  - The **F1 score for "anticipation"** also increased to 0.4634, marking progress in handling classes with sparse data.
+  - The chosen checkpoint effectively balanced between minimizing validation loss and maximizing F1 score, reducing overfitting while preserving model performance.
+
