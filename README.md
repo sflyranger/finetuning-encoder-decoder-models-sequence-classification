@@ -16,14 +16,8 @@ The models are listed in the order of their training and evaluation:
 
 Below is a summary of the overall performance of each model based on the **F1-Macro** scores. This metric was chosen as the key evaluation criterion to assess model effectiveness across all classes, especially the underrepresented ones.
 
-| Model                      | Average F1-Macro (Validation) | Notable Improvements on Underrepresented Classes |
-|----------------------------|-------------------------------|-------------------------------------------------|
-| RoBERTa-base (encoder)     | 0.0479                        | Struggled with most minority classes            |
-| DistilBERT-base-uncased    | 0.4658                        | Minor improvement on "anger" and "sadness"      |
-| DistilRoBERTa-base         | 0.5587                        | Better on "fear" and "surprise"                 |
-| Gemma (decoder with LoRA)  | 0.6222                        | Significant gains on "anticipation" and "trust" |
-| Llama-3.2-1B (decoder)     | 0.6217                        | Improved "anticipation" and "pessimism"         |
-| Stella_en_1.5B_v5 (decoder)| 0.6191                        | Gains on "anticipation" and "trust"             |
+<img width="1046" alt="image" src="https://github.com/user-attachments/assets/8fa5c89e-3ded-4dd7-b0a3-9f0967e9e3f9">
+
 
 ### Key Observations:
 - The **Gemma model** showed the highest F1-Macro score (0.6222), particularly excelling in the minority classes like "anticipation" and "trust".
