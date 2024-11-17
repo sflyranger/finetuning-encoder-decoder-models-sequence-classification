@@ -16,8 +16,7 @@ The models are listed in the order of their training and evaluation:
 
 Below is a summary of the overall performance of each model based on the **F1-Macro** scores. This metric was chosen as the key evaluation criterion to assess model effectiveness across all classes, especially the underrepresented ones.
 
-<img width="1046" alt="image" src="https://github.com/user-attachments/assets/8fa5c89e-3ded-4dd7-b0a3-9f0967e9e3f9">
-
+<img width="1046" alt="image" src="https://github.com/user-attachments/assets/26e10041-83cd-40fa-8772-2c7c39008bed">
 
 ### Key Observations:
 - The **Gemma model** showed the highest F1-Macro score (0.6222), particularly excelling in the minority classes like "anticipation" and "trust".
