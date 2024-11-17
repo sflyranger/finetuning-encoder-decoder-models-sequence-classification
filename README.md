@@ -5,12 +5,12 @@ This repository contains implementations and experiments for multilabel emotion 
 
 ### Models Trained
 The models are listed in the order of their training and evaluation:
-1. `RoBERTa-base`
-2. `DistilBERT-base-uncased`
-3. `DistilRoBERTa-base`
-4. `Gemma`
-5. `Llama-3.2-1B`
-6. `Stella_en_1.5B_v5`
+1. `RoBERTa-base` (encoder)
+2. `DistilBERT-base-uncased` (encoder)
+3. `DistilRoBERTa-base` (encoder)
+4. `Gemma` (decoder-lora)
+5. `Llama-3.2-1B` (decoder-lora)
+6. `Stella_en_1.5B_v5` (decoder-lora)
 
 ## Model Training Details
 
