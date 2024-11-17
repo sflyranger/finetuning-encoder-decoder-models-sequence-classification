@@ -1,4 +1,4 @@
-# Multilabel Emotion Detection
+# Finetuning Encoder and Decoder Models for Emotion Detection
 
 ## Overview
 This repository contains implementations and experiments for multilabel emotion detection using various pretrained language models. The task is to classify texts into multiple emotion categories using models of varying sizes and capabilities. Each model is evaluated based on its performance on the validation set and in competition settings.
