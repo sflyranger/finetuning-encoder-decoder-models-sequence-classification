@@ -12,6 +12,25 @@ The models are listed in the order of their training and evaluation:
 5. **Llama-3.2-1B (decoder with LoRA)**: A generative decoder model optimized for text generation tasks, fine-tuned using LoRA for efficient parameter adaptation.
 6. **Stella_en_1.5B_v5 (decoder with LoRA)**: Another powerful decoder model using LoRA for fine-tuning, focusing on optimizing performance while reducing overfitting.
 
+## Performance Comparison
+
+Below is a summary of the overall performance of each model based on the **F1-Macro** scores. This metric was chosen as the key evaluation criterion to assess model effectiveness across all classes, especially the underrepresented ones.
+
+| Model                      | Average F1-Macro (Validation) | Notable Improvements on Underrepresented Classes |
+|----------------------------|-------------------------------|-------------------------------------------------|
+| RoBERTa-base (encoder)     | 0.0479                        | Struggled with most minority classes            |
+| DistilBERT-base-uncased    | 0.4658                        | Minor improvement on "anger" and "sadness"      |
+| DistilRoBERTa-base         | 0.5587                        | Better on "fear" and "surprise"                 |
+| Gemma (decoder with LoRA)  | 0.6222                        | Significant gains on "anticipation" and "trust" |
+| Llama-3.2-1B (decoder)     | 0.6217                        | Improved "anticipation" and "pessimism"         |
+| Stella_en_1.5B_v5 (decoder)| 0.6191                        | Gains on "anticipation" and "trust"             |
+
+### Key Observations:
+- The **Gemma model** showed the highest F1-Macro score (0.6222), particularly excelling in the minority classes like "anticipation" and "trust".
+- The **Llama-3.2-1B** and **Stella models** performed comparably, with F1-Macro scores around 0.62, showcasing strengths in challenging classes like "anticipation" and "pessimism".
+- **DistilRoBERTa-base** demonstrated a moderate improvement over its predecessors, especially for "fear" and "surprise."
+- The initial **RoBERTa-base** model struggled due to challenges in class weight implementation, leading to poor performance on underrepresented classes.
+
 ## Model Training Details
 
 ### 1. RoBERTa-base
