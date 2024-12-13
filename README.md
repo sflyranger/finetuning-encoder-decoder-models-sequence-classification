@@ -15,6 +15,8 @@ The models are listed in the order of their training and evaluation:
 6. **Stella_en_1.5B_v5 (decoder with LoRA)**: Another powerful decoder model using LoRA for fine-tuning, focusing on optimizing performance while reducing overfitting.
 7. **Qwen 2.5_1.5B Base (decoder)**: A decoder model trained to balance performance on frequent and sparse emotion labels, with specific focus on improving generalization and handling of underrepresented classes.
 8. **Llama-3.2-3B-it (decoder)**: A decoder model leveraging iterative fine-tuning and enhanced cross-validation techniques to achieve balanced performance across frequent and minority emotion classes.
+9. **Qwen-14B-Instruct (decoder using LoRA on Runpod platform)**: An instruction-tuned decoder model designed to understand nuanced inter-label relationships, achieving a strong balance of precision and recall across frequent and sparse emotion classes.
+
 
 
 ## Performance Comparison
@@ -287,5 +289,42 @@ Below is a summary of the overall performance of each model based on the **F1-Ma
   - The model achieved an **F1 score of 0.4288 for "anticipation"** and **0.3474 for "surprise,"** indicating steady progress for these challenging classes.
   - Notable improvements in recall for "joy" and "optimism" demonstrate the model's robustness in handling positive emotions.
   - The Kaggle competition F1-Macro score of **0.5841** closely aligns with the validation results, showcasing the model's ability to generalize effectively to unseen data.
+
+
+### 9. Qwen-14B-Instruct
+- **Notebook**: [`QWEN_14B_Instruct_multilabel_generation_emotion.ipynb`](./QWEN_14B_Instruct_multilabel_generation_emotion.ipynb)
+- **Training Method**: Fine-tuned using the `transformers` library with an emphasis on handling complex, multilabel emotion classification tasks. The model incorporated instruction-tuned methodologies to enhance understanding of nuanced label relationships.
+- **Validation Strategy**: 10-fold cross-validation for robust and fair evaluation across all classes.
+
+- **Notes**:
+  - This model exhibited strong performance across frequent and sparse emotion labels, showing particular improvements in "disgust," "optimism," and "joy."
+  - Leveraged instruction tuning to better handle interdependent label relationships, enabling balanced precision and recall across emotion classes.
+  - Notable gains in minority class predictions, with improved F1 scores for "disgust," "surprise," and "trust."
+
+#### Results
+- **Average F1-Macro (Validation)**: 0.6229
+- **Average F1-Macro (Competition)**: 0.5963
+
+- **Class-wise F1 Scores (Validation)**:
+
+| Label         | F1-Score |
+|---------------|----------|
+| anger         | 0.8279   |
+| anticipation  | 0.4465   |
+| disgust       | 0.7545   |
+| fear          | 0.7365   |
+| joy           | 0.8268   |
+| love          | 0.6237   |
+| optimism      | 0.7813   |
+| pessimism     | 0.4590   |
+| sadness       | 0.7070   |
+| surprise      | 0.5373   |
+| trust         | 0.1509   |
+
+- **Key Observations**:
+  - Achieved the **highest F1 score for "optimism"** (0.7813), marking a significant improvement compared to previous models.
+  - The **F1 score for "disgust"** improved to 0.7545, demonstrating better handling of this challenging class.
+  - Instruction tuning facilitated balanced performance across classes, with steady progress for both frequent and sparse labels like "surprise" and "trust."
+  - The Kaggle competition F1-Macro score of **0.5963** further highlights the model's ability to generalize effectively to unseen data.
 
 
