@@ -13,7 +13,9 @@ The models are listed in the order of their training and evaluation:
 4. **Gemma (decoder with LoRA)**: A decoder model fine-tuned using LoRA (Low-Rank Adaptation) to reduce the number of trainable parameters and optimize for generative capabilities.
 5. **Llama-3.2-1B (decoder with LoRA)**: A generative decoder model optimized for text generation tasks, fine-tuned using LoRA for efficient parameter adaptation.
 6. **Stella_en_1.5B_v5 (decoder with LoRA)**: Another powerful decoder model using LoRA for fine-tuning, focusing on optimizing performance while reducing overfitting.
-7. 
+7. **Qwen 2.5_1.5B Base (decoder)**: A decoder model trained to balance performance on frequent and sparse emotion labels, with specific focus on improving generalization and handling of underrepresented classes.
+8. **Llama-3.2-3B-it (decoder)**: A decoder model leveraging iterative fine-tuning and enhanced cross-validation techniques to achieve balanced performance across frequent and minority emotion classes.
+
 
 ## Performance Comparison
 
