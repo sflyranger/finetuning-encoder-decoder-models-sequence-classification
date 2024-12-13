@@ -13,6 +13,7 @@ The models are listed in the order of their training and evaluation:
 4. **Gemma (decoder with LoRA)**: A decoder model fine-tuned using LoRA (Low-Rank Adaptation) to reduce the number of trainable parameters and optimize for generative capabilities.
 5. **Llama-3.2-1B (decoder with LoRA)**: A generative decoder model optimized for text generation tasks, fine-tuned using LoRA for efficient parameter adaptation.
 6. **Stella_en_1.5B_v5 (decoder with LoRA)**: Another powerful decoder model using LoRA for fine-tuning, focusing on optimizing performance while reducing overfitting.
+7. 
 
 ## Performance Comparison
 
@@ -212,4 +213,39 @@ Below is a summary of the overall performance of each model based on the **F1-Ma
   - By using a custom-selected checkpoint, the **F1 score for "trust"** improved to 0.3371, a significant gain for this challenging class.
   - The **F1 score for "anticipation"** also increased to 0.4634, marking progress in handling classes with sparse data.
   - The chosen checkpoint effectively balanced between minimizing validation loss and maximizing F1 score, reducing overfitting while preserving model performance.
+
+### 7. Qwen 2.5_1.5B Base
+- **Notebook**: [`Qwen_2.5_1.5B_Base.ipynb`](./Qwen_2_5_1_5B_multilabel_emotion_generation.ipynb)
+- **Training Method**: Fine-tuned with a focus on balancing class weights and improving prediction for underrepresented classes.
+- **Validation Strategy**: 10-fold cross-validation for robust performance assessment.
+
+- **Notes**:
+  - This model attempted to handle sparse data in minority classes through careful adjustment of loss weighting.
+  - The validation results showed good precision for some classes but struggled with recall for several underrepresented emotions, particularly "disgust" and "trust."
+  - Competition results reflect the model's challenges in generalizing to unseen data, with a lower overall F1 score.
+
+#### Results
+- **Average F1-Macro (Validation)**: 0.4341
+- **Average F1-Macro (Competition)**: 0.4257
+
+- **Class-wise F1 Scores (Validation)**:
+
+| Label         | F1-Score |
+|---------------|----------|
+| anger         | 0.8261   |
+| anticipation  | 0.4413   |
+| disgust       | 0.0269   |
+| fear          | 0.3799   |
+| joy           | 0.8064   |
+| love          | 0.6      |
+| optimism      | 0.6387   |
+| pessimism     | 0.2703   |
+| sadness       | 0.4927   |
+| surprise      | 0.1702   |
+| trust         | 0.1224   |
+
+- **Key Observations**:
+  - Precision was high for most classes, but recall was very low for emotions like "disgust" and "trust," resulting in reduced F1 scores for those classes.
+  - Despite struggles with underrepresented classes, the model demonstrated strong performance on "anger," "joy," and "optimism."
+  - Competition performance revealed challenges with generalization, reflected in a slightly lower F1-macro score compared to validation.
 
