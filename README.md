@@ -249,3 +249,41 @@ Below is a summary of the overall performance of each model based on the **F1-Ma
   - Despite struggles with underrepresented classes, the model demonstrated strong performance on "anger," "joy," and "optimism."
   - Competition performance revealed challenges with generalization, reflected in a slightly lower F1-macro score compared to validation.
 
+
+ ### 8. Llama-3.2-3B-it
+- **Notebook**: [`llama_3_2_3B_it_Multilabel__emotion_generation.ipynb`](./llama_3_2_3B_it_Multilabel__emotion_generation.ipynb)
+- **Training Method**: Fine-tuned using the `transformers` library with enhanced training strategies to optimize performance for emotion classification.
+- **Validation Strategy**: 10-fold cross-validation to ensure robust and balanced evaluation across all classes.
+
+- **Notes**:
+  - This model introduced iterative fine-tuning techniques, leveraging feedback from prior experiments to optimize hyperparameters and loss weighting.
+  - Demonstrated a more balanced performance across classes compared to earlier models, particularly improving recall for minority emotions such as "disgust" and "trust."
+  - Significant gains in precision and recall for "joy," "optimism," and "anger" highlight the model's ability to generalize well across both frequent and sparse labels.
+
+#### Results
+- **Average F1-Macro (Validation)**: 0.5929
+- **Average F1-Macro (Competition)**: 0.5841
+
+- **Class-wise F1 Scores (Validation)**:
+
+| Label         | F1-Score |
+|---------------|----------|
+| anger         | 0.8169   |
+| anticipation  | 0.4288   |
+| disgust       | 0.7762   |
+| fear          | 0.7491   |
+| joy           | 0.8283   |
+| love          | 0.5778   |
+| optimism      | 0.7031   |
+| pessimism     | 0.3547   |
+| sadness       | 0.6939   |
+| surprise      | 0.3474   |
+| trust         | 0.2460   |
+
+- **Key Observations**:
+  - The **F1 score for "disgust"** reached 0.7762, marking one of the highest performances for this class among all models.
+  - The model achieved an **F1 score of 0.4288 for "anticipation"** and **0.3474 for "surprise,"** indicating steady progress for these challenging classes.
+  - Notable improvements in recall for "joy" and "optimism" demonstrate the model's robustness in handling positive emotions.
+  - The Kaggle competition F1-Macro score of **0.5841** closely aligns with the validation results, showcasing the model's ability to generalize effectively to unseen data.
+
+
